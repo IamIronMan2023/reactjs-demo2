@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EmployeeView from "./pages/EmployeeView";
 import NotFoundPageComponent from "./components/NotFoundPageComponent";
 import EmployeeCreate from "./pages/EmployeeCreate";
+import EmployeeEdit from "./pages/EmployeeEdit";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/employees/:id" element={<EmployeeView />}></Route>
           <Route path="*" element={<NotFoundPageComponent />}></Route>
           <Route path="/employees/create" element={<EmployeeCreate />}></Route>
+          <Route path="/employees/edit/:id" element={<EmployeeEdit />}></Route>
         </Routes>
       </BrowserRouter>
     </>

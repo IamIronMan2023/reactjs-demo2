@@ -55,12 +55,25 @@ const EmployeeView = () => {
           </p>
           <p>
             <label>
+              Age <strong>{employee.age}</strong>
+            </label>
+          </p>
+          <p>
+            <label>
               Email <strong>{employee.email}</strong>
+            </label>
+          </p>
+          <p>
+            <label>
+              Gender <strong>{employee.gender}</strong>
             </label>
           </p>
 
           <p>
             <Link to={"/"}>Back to List</Link>
+          </p>
+          <p>
+            <Link to={`/employees/edit/${id}`}>Edit</Link>
           </p>
         </>
       )}
