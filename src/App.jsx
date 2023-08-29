@@ -7,6 +7,7 @@ import EmployeeList from "./pages/EmployeeList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EmployeeView from "./pages/EmployeeView";
 import NotFoundPageComponent from "./components/NotFoundPageComponent";
+import EmployeeCreate from "./pages/EmployeeCreate";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/" element={<EmployeeList />}></Route>
           <Route path="/employees/:id" element={<EmployeeView />}></Route>
           <Route path="*" element={<NotFoundPageComponent />}></Route>
+          <Route path="/employees/create" element={<EmployeeCreate />}></Route>
         </Routes>
       </BrowserRouter>
     </>
