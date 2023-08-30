@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 const EmployeeView = () => {
   const { id } = useParams();
@@ -10,9 +10,10 @@ const EmployeeView = () => {
     gender: "",
   });
   const [loading, setLoading] = useState(false);
+  const url = `${import.meta.env.VITE_API_URL}/employees/${id}`;
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const url = `${import.meta.env.VITE_API_URL}/employees/${id}`;
     const controller = new AbortController();
 
     const requestOptions = {
@@ -35,6 +36,24 @@ const EmployeeView = () => {
       controller.abort();
     };
   }, []);
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    if (window.confirm("Are you sure you want to Delete this Employee?")) {
+      const requestOptions = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      fetch(url, requestOptions)
+        .then(() => {
+          navigate("/");
+        })
+        .catch((error) => console.log(error));
+    }
+  };
 
   return (
     <>
@@ -74,6 +93,9 @@ const EmployeeView = () => {
           </p>
           <p>
             <Link to={`/employees/edit/${id}`}>Edit</Link>
+          </p>
+          <p>
+            <Link onClick={handleDelete}>Delete</Link>
           </p>
         </>
       )}
