@@ -33,7 +33,7 @@ function App() {
 
       {/* <UseEffectDemoComponent /> */}
 
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<EmployeeList />}></Route>
           <Route path="/employees/:id" element={<EmployeeView />}></Route>
@@ -41,16 +41,16 @@ function App() {
           <Route path="/employees/create" element={<EmployeeCreate />}></Route>
           <Route path="/employees/edit/:id" element={<EmployeeEdit />}></Route>
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
 
-      <SampleProvider>
+      {/* <SampleProvider>
         <BrowserRouter>
           <Routes>
             <Route path="/Demo1" element={<ContextDemoComponent1 />}></Route>
             <Route path="/Demo2" element={<ContextDemoComponent2 />}></Route>
           </Routes>
         </BrowserRouter>
-      </SampleProvider>
+      </SampleProvider> */}
     </>
   );
 }
