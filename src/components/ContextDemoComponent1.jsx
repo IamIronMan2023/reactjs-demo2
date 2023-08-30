@@ -1,11 +1,11 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { SampleContext } from "../contexts/SampleContext";
+import { useSampleContext } from "../contexts/SampleContext";
 
 const ContextDemoComponent1 = () => {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  const { data, setData } = useContext(SampleContext);
+  const { data, setData } = useSampleContext();
 
   const handleClick = (e) => {
     e.preventDefault();
