@@ -9,6 +9,9 @@ import EmployeeView from "./pages/EmployeeView";
 import NotFoundPageComponent from "./components/NotFoundPageComponent";
 import EmployeeCreate from "./pages/EmployeeCreate";
 import EmployeeEdit from "./pages/EmployeeEdit";
+import ContextDemoComponent1 from "./components/ContextDemoComponent1";
+import ContextDemoComponent2 from "./components/ContextDemoComponent2";
+import { SampleProvider } from "./contexts/SampleContext";
 
 function App() {
   return (
@@ -30,7 +33,7 @@ function App() {
 
       {/* <UseEffectDemoComponent /> */}
 
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route path="/" element={<EmployeeList />}></Route>
           <Route path="/employees/:id" element={<EmployeeView />}></Route>
@@ -38,7 +41,16 @@ function App() {
           <Route path="/employees/create" element={<EmployeeCreate />}></Route>
           <Route path="/employees/edit/:id" element={<EmployeeEdit />}></Route>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+
+      <SampleProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/Demo1" element={<ContextDemoComponent1 />}></Route>
+            <Route path="/Demo2" element={<ContextDemoComponent2 />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </SampleProvider>
     </>
   );
 }
