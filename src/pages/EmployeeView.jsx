@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const EmployeeView = () => {
   const { id } = useParams();
@@ -10,6 +11,7 @@ const EmployeeView = () => {
     gender: "",
   });
   const [loading, setLoading] = useState(false);
+  const { token } = useAuth();
   const url = `${import.meta.env.VITE_API_URL}/employees/${id}`;
   const navigate = useNavigate();
 
@@ -21,6 +23,7 @@ const EmployeeView = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     };
     setLoading(true);
@@ -44,6 +47,7 @@ const EmployeeView = () => {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
       };
 

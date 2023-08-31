@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const EmployeeEdit = () => {
   const { id } = useParams();
@@ -12,6 +13,7 @@ const EmployeeEdit = () => {
   });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { token } = useAuth();
 
   useEffect(() => {
     const url = `${import.meta.env.VITE_API_URL}/employees/${id}`;
@@ -22,6 +24,7 @@ const EmployeeEdit = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     };
     setLoading(true);
@@ -47,6 +50,7 @@ const EmployeeEdit = () => {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
 
       body: JSON.stringify({

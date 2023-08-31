@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setToken, setIsAuthenticated } = useAuth();
+
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -24,7 +27,8 @@ const Login = () => {
     const fetchResponse = await fetch(url, requestOptions);
     if (fetchResponse.status === 200) {
       let data = await fetchResponse.json();
-      //pass the token to the context
+      setToken(data.token);
+      setIsAuthenticated(true);
       navigate("/");
     } else {
       alert("Invalid Credential");
@@ -59,3 +63,5 @@ const Login = () => {
     </>
   );
 };
+
+export default Login;

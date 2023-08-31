@@ -12,6 +12,8 @@ import EmployeeEdit from "./pages/EmployeeEdit";
 import ContextDemoComponent1 from "./components/ContextDemoComponent1";
 import ContextDemoComponent2 from "./components/ContextDemoComponent2";
 import { SampleProvider } from "./contexts/SampleContext";
+import Login from "./pages/Login";
+import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
   return (
@@ -32,16 +34,24 @@ function App() {
       {/* <WelcomeComponent /> */}
 
       {/* <UseEffectDemoComponent /> */}
-
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<EmployeeList />}></Route>
-          <Route path="/employees/:id" element={<EmployeeView />}></Route>
-          <Route path="*" element={<NotFoundPageComponent />}></Route>
-          <Route path="/employees/create" element={<EmployeeCreate />}></Route>
-          <Route path="/employees/edit/:id" element={<EmployeeEdit />}></Route>
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<EmployeeList />}></Route>
+            <Route path="/employees/:id" element={<EmployeeView />}></Route>
+            <Route path="*" element={<NotFoundPageComponent />}></Route>
+            <Route
+              path="/employees/create"
+              element={<EmployeeCreate />}
+            ></Route>
+            <Route
+              path="/employees/edit/:id"
+              element={<EmployeeEdit />}
+            ></Route>
+            <Route path="/login" element={<Login />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
 
       {/* <SampleProvider>
         <BrowserRouter>
