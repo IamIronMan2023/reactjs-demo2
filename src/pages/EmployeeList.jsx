@@ -5,7 +5,7 @@ import { useAuth } from "../contexts/AuthContext";
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { token } = useAuth();
+  const { token, setToken, setIsAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -48,6 +48,8 @@ const EmployeeList = () => {
 
     const fetchResponse = await fetch(url, requestOptions);
     if (fetchResponse.status === 200) {
+      setIsAuthenticated(false);
+      setToken(null);
       alert("You log out successfully");
       navigate("/login");
     }
