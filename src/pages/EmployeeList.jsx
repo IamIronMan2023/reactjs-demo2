@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { Button, Table } from "react-bootstrap";
+import { Search } from "react-bootstrap-icons";
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
@@ -35,26 +37,6 @@ const EmployeeList = () => {
     };
   }, []);
 
-  const handleLogOut = async (e) => {
-    e.preventDefault();
-    const url = `${import.meta.env.VITE_API_URL}/logout`;
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    };
-
-    const fetchResponse = await fetch(url, requestOptions);
-    if (fetchResponse.status === 200) {
-      setIsAuthenticated(false);
-      setToken(null);
-      alert("You log out successfully");
-      navigate("/login");
-    }
-  };
-
   return (
     <>
       <h2>Employee List</h2>
@@ -65,10 +47,8 @@ const EmployeeList = () => {
           <p>
             <Link to="/employees/create">Create New Employee</Link>
           </p>
-          <p>
-            <Link onClick={handleLogOut}>Log Out</Link>
-          </p>
-          <table>
+
+          <Table striped bordered hover>
             <thead>
               <tr>
                 <th>First Name</th>
@@ -84,12 +64,16 @@ const EmployeeList = () => {
                   <td>{employee.last_name}</td>
                   <td>{employee.email}</td>
                   <td>
-                    <Link to={`employees/${employee.id}`}>View</Link>
+                    <Link to={`employees/${employee.id}`}>
+                      <Button>
+                        <Search />
+                      </Button>
+                    </Link>
                   </td>
                 </tr>
               ))}
             </tbody>
-          </table>
+          </Table>
         </>
       )}
     </>

@@ -15,6 +15,10 @@ import { SampleProvider } from "./contexts/SampleContext";
 import Login from "./pages/Login";
 import { AuthProvider } from "./contexts/AuthContext";
 import SecureRoute from "./SecureRoute";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container } from "react-bootstrap";
+import NavbarComponent from "./components/NavbarComponent";
+import Logout from "./pages/Logout";
 
 function App() {
   return (
@@ -35,7 +39,8 @@ function App() {
       {/* <WelcomeComponent /> */}
 
       {/* <UseEffectDemoComponent /> */}
-      <AuthProvider>
+      <NavbarComponent />
+      <Container>
         <BrowserRouter>
           <Routes>
             <Route element={<SecureRoute />}>
@@ -50,11 +55,12 @@ function App() {
                 path="/employees/edit/:id"
                 element={<EmployeeEdit />}
               ></Route>
+              <Route path="/logout" element={<Logout />}></Route>
             </Route>
             <Route path="/login" element={<Login />}></Route>
           </Routes>
         </BrowserRouter>
-      </AuthProvider>
+      </Container>
 
       {/* <SampleProvider>
         <BrowserRouter>
