@@ -39,9 +39,9 @@ function App() {
       {/* <WelcomeComponent /> */}
 
       {/* <UseEffectDemoComponent /> */}
-      <NavbarComponent />
-      <Container>
-        <BrowserRouter>
+      <BrowserRouter>
+        <NavbarComponent />
+        <Container>
           <Routes>
             <Route element={<SecureRoute />}>
               <Route path="/" element={<EmployeeList />}></Route>
@@ -59,8 +59,8 @@ function App() {
             </Route>
             <Route path="/login" element={<Login />}></Route>
           </Routes>
-        </BrowserRouter>
-      </Container>
+        </Container>
+      </BrowserRouter>
 
       {/* <SampleProvider>
         <BrowserRouter>
