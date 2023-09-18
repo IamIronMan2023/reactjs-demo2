@@ -7,7 +7,7 @@ const Logout = () => {
 
   useEffect(() => {
     async function doLogOut() {
-      const url = `${import.meta.env.VITE_API_URL}/logout`;
+      const url = `${import.meta.env.VITE_API_URL}/users/logout`;
       const requestOptions = {
         method: "POST",
         headers: {

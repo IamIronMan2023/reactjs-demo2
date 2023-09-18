@@ -64,7 +64,7 @@ const EmployeeList = () => {
                   <td>{employee.last_name}</td>
                   <td>{employee.email}</td>
                   <td>
-                    <Link to={`employees/${employee.id}`}>
+                    <Link to={`employees/${employee._id}`}>
                       <Button>
                         <Search />
                       </Button>

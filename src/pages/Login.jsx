@@ -12,7 +12,7 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const url = `${import.meta.env.VITE_API_URL}/login`;
+    const url = `${import.meta.env.VITE_API_URL}/users/login`;
 
     const requestOptions = {
       method: "POST",

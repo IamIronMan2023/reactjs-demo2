@@ -66,7 +66,7 @@ const EmployeeEdit = () => {
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
-        navigate(`/employees/${json.employee.id}`);
+        navigate(`/employees/${id}`);
       })
       .catch((err) => {
         console.log(err);
