@@ -37,7 +37,7 @@ const EmployeeCreate = () => {
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
-        navigate(`/employees/${json.employee._id}`);
+        navigate(`/employees/${json.data._id}`);
       })
       .catch((err) => {
         console.log(err);
