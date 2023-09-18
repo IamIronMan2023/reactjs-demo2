@@ -14,6 +14,9 @@ const Logout = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
+        body: JSON.stringify({
+          access_token: token,
+        }),
       };
 
       const fetchResponse = await fetch(url, requestOptions);

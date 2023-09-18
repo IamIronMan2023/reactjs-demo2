@@ -59,7 +59,7 @@ const EmployeeList = () => {
             </thead>
             <tbody>
               {employees.map((employee) => (
-                <tr key={employee.id}>
+                <tr key={employee._id}>
                   <td>{employee.first_name}</td>
                   <td>{employee.last_name}</td>
                   <td>{employee.email}</td>
